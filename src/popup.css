@@ -1,0 +1,265 @@
+:root {
+  --bg:        #0e1015;
+  --surface:   #171a21;
+  --border:    #252830;
+  --accent:    #a78bfa;
+  --accent-lo: rgba(167, 139, 250, 0.15);
+  --text:      #dde1eb;
+  --muted:     #5a6070;
+  --green:     #4ade80;
+  --red:       #f87171;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  min-width: 290px;
+  max-width: 290px;
+}
+
+.app {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Topbar ──────────────────────────────────────────────── */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2px;
+}
+
+.topbar-name {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.status-pill {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid var(--green);
+  color: var(--green);
+  transition: border-color 0.25s, color 0.25s;
+}
+
+.status-pill.disabled {
+  border-color: var(--muted);
+  color: var(--muted);
+}
+
+/* ── Stats block ─────────────────────────────────────────── */
+
+.stats-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 14px 12px;
+}
+
+.stats-fraction {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.frac-rendered {
+  font-size: 30px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.frac-sep {
+  font-size: 20px;
+  color: var(--muted);
+  margin: 0 1px;
+}
+
+.frac-total {
+  font-size: 22px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.stats-sublabel {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.bar-track {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stats-detail {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── Section heading ─────────────────────────────────────── */
+
+.section-heading {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding-left: 1px;
+}
+
+/* ── Settings list ───────────────────────────────────────── */
+
+.settings-list {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 13px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.setting-row:hover { background: rgba(255, 255, 255, 0.03); }
+
+.setting-row + .setting-row {
+  border-top: 1px solid var(--border);
+}
+
+.setting-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.setting-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.setting-desc {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* Visually hidden real checkbox — drives toggle state */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Visible toggle track */
+.toggle {
+  flex-shrink: 0;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--border);
+  position: relative;
+  transition: background 0.2s;
+}
+
+.thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: transform 0.2s, background 0.2s;
+}
+
+/* Checked state via sibling selector */
+.sr-only:checked + .toggle {
+  background: var(--accent-lo);
+  border: 1px solid var(--accent);
+}
+
+.sr-only:checked + .toggle .thumb {
+  transform: translateX(16px);
+  background: var(--accent);
+}
+
+/* Number input */
+.num-input {
+  flex-shrink: 0;
+  width: 50px;
+  padding: 5px 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  cursor: text;
+  transition: border-color 0.2s;
+  appearance: textfield;
+}
+
+.num-input::-webkit-inner-spin-button,
+.num-input::-webkit-outer-spin-button { opacity: 1; }
+
+.num-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ── Legal ───────────────────────────────────────────────── */
+
+.legal {
+  margin: 0;
+  font-size: 10px;
+  color: var(--border);
+  text-align: center;
+}

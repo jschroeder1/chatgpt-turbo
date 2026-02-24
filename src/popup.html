@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ChatGPT Turbo</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+
+    <div class="topbar">
+      <span class="topbar-name">⚡ ChatGPT Turbo</span>
+      <span class="status-pill" id="statusPill">active</span>
+    </div>
+
+    <div class="stats-block">
+      <div class="stats-fraction">
+        <span class="frac-rendered" id="statRendered">—</span>
+        <span class="frac-sep">/</span>
+        <span class="frac-total" id="statTotal">—</span>
+      </div>
+      <div class="stats-sublabel">messages rendered</div>
+      <div class="bar-track">
+        <div class="bar-fill" id="savingsBar"></div>
+      </div>
+      <div class="stats-detail" id="statsDetail">Open a ChatGPT conversation to see stats</div>
+    </div>
+
+    <div class="section-heading">Settings</div>
+    <div class="settings-list">
+      <label class="setting-row">
+        <div class="setting-info">
+          <span class="setting-name">Enabled</span>
+          <span class="setting-desc">Intercept and trim long conversations</span>
+        </div>
+        <input type="checkbox" class="sr-only" id="toggleEnabled" />
+        <span class="toggle" aria-hidden="true"><span class="thumb"></span></span>
+      </label>
+      <label class="setting-row">
+        <div class="setting-info">
+          <span class="setting-name">Messages to show</span>
+          <span class="setting-desc">Lower values give a bigger speed boost</span>
+        </div>
+        <input type="number" id="messageLimit" class="num-input" min="1" max="100" value="20" />
+      </label>
+      <label class="setting-row">
+        <div class="setting-info">
+          <span class="setting-name">Debug logging</span>
+          <span class="setting-desc">Print activity to the DevTools console</span>
+        </div>
+        <input type="checkbox" class="sr-only" id="toggleDebug" />
+        <span class="toggle" aria-hidden="true"><span class="thumb"></span></span>
+      </label>
+    </div>
+
+    <p class="legal">Independent project · not affiliated with OpenAI</p>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
