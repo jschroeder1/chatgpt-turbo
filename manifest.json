@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ChatGPT Turbo: Fix Lag in Long Chats",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Stop browser freezing and lag in long ChatGPT conversations. Instantly speeds up the entire UI and reduces memory usage.",
   "permissions": [
     "storage",

@@ -192,10 +192,15 @@
     const hidden = Math.max(0, stats.totalMessages - stats.renderedMessages);
     const limit  = settings.messageLimit || 20;
     const count  = hidden > 0 && hidden < limit ? hidden : limit;
-    btn.innerHTML = `
-      <span style="display:block">Load ${count} previous messages</span>
-      <span style="display:block;font-size:10px;opacity:0.55;margin-top:3px">adjust amount in extension settings</span>
-    `;
+    btn.textContent = '';
+    const line1 = document.createElement('span');
+    line1.style.cssText = 'display:block';
+    line1.textContent = `Load ${count} previous messages`;
+    const line2 = document.createElement('span');
+    line2.style.cssText = 'display:block;font-size:10px;opacity:0.55;margin-top:3px';
+    line2.textContent = 'adjust amount in extension settings';
+    btn.appendChild(line1);
+    btn.appendChild(line2);
   }
 
   function createLoadMoreButton() {
