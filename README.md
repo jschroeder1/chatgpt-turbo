@@ -38,3 +38,5 @@ If you need to see older messages, a **Load previous messages** button appears a
 ## License
 
 MIT — see [LICENSE](LICENSE)
+
+This project was developed with reference to [ChatGPT Speed Booster](https://github.com/bramvdg/chatgpt-lag-fixer/commit/e269bf95910ef02fd38b3df72f5ba298f157d5a4) (version 2.0.0), which was released under the MIT License at the time of review.
